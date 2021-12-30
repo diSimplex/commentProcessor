@@ -1,0 +1,27 @@
+[project]
+name = "CommentProcessor"
+version = "0.0.1"
+description = "A simple Naive Bayesian base commentd processor."
+authors = [
+    {name = "Stephen Gaito", email = "stephen@perceptisys.co.uk"},
+]
+dependencies = [
+    "numpy~=1.21",
+]
+requires-python = ">=3.9"
+dynamic = ["classifiers"]
+license = {text = "Apache-2.0"}
+
+[project.urls]
+homepage = "https://github.com/diSimplex/commentProcessor"
+
+#[project.scripts]
+#cpmd = "cpmd:cpmd"
+
+[project.optional-dependencies]
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+[tool]
+[tool.pdm]
