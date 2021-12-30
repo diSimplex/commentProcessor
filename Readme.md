@@ -9,10 +9,10 @@ instead of raw term frequencies.
 
 We will classify comments in to four categories:
 
-1. *S*pam
-2. General *P*ublic
-3. *R*esearcher
-4. *E*xpert
+1. **S**pam
+2. General **P**ublic
+3. **R**esearcher
+4. **E**xpert
 
 To ensure greater specificity as we move between the categories, the
 non-class will always be the collection of all more expert categories:
