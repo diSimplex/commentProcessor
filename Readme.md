@@ -1,6 +1,34 @@
 # diSimplex Comment Processor
 
-A simple Bayesian base comment processor
+A simple Bayesian based comment processor
+
+We will use [Mutinomial naive Bayes
+classifier](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_na%C3%AFve_Bayes)
+using [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) weights
+instead of raw term frequencies.
+
+We will classify comments in to four categories:
+
+1. *S*pam
+2. General *P*ublic
+3. *R*esearcher
+4. *E*xpert
+
+To ensure greater specificity as we move between the categories, the
+non-class will always be the collection of all more expert categories:
+
+1. non-spam is the union of Public, Researcher and Expert comments
+2. non-public is the union of Researcher and Expert comments
+3. non-researcher is the collection of Expert comments
+
+We will estimate the probable classification of each of the three categorical choices:
+
+1. spam / non-spam
+2. public / non-public
+3. researcher / non-researcher
+
+The chosen classification will be the most expert predicted classification
+obtained from all three tests.
 
 ## Resources
 
