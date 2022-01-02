@@ -2,6 +2,29 @@
 
 A simple Bayesian based comment processor
 
+Since the current diSimplex editor is an English speaker (alas only
+English), comments to be read and understood need to be written in
+(reasonable) English.
+
+This suggests that the comment processor should target classification
+using English. Since comments will come from non-native English speakers,
+this comment processor *must* be able to classify imperfect English. This
+suggests that any Natural Language Processing tools must not use models of
+perfect English. Among other things, this suggest we should only use
+simple stemming, rather than more complex lemmation or parts of speech
+analysis.
+
+We will use [Snowball](https://snowballstem.org/) or a
+[Porter](https://tartarus.org/martin/PorterStemmer/) algorithm to reduce
+the variations in English words.
+
+We will ignore words which are equally prevalent in all classes
+(effectively stop words based upon our own corpus). We will only compute
+probabilities using the X *most* distinguishing words rather than all words
+in the comment (this is similar to [Paul Graham's
+suggestion](http://www.paulgraham.com/better.html) to use the 15 that only
+occur in one of the classes).
+
 We will use [Mutinomial naive Bayes
 classifier](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Multinomial_na%C3%AFve_Bayes)
 using [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) weights
@@ -29,6 +52,16 @@ We will estimate the probable classification of each of the three categorical ch
 
 The chosen classification will be the most expert predicted classification
 obtained from all three tests.
+
+### Additional tools
+
+We *might* eventually consider using a Neural Network approach using
+[TensorFlow (lite?)](). We might even consider using TensorFlow to
+[implement the Naive Bayes
+estimator](https://nicolovaligi.com/articles/naive-bayes-tensorflow/).
+
+We *should* [check
+emails](https://blog.bounceless.io/how-to-check-if-an-email-address-is-fake/)
 
 ## Resources
 
@@ -74,6 +107,14 @@ Tutorial](https://www.tutorialspoint.com/machine_learning_with_python/index.htm)
 - [spaCy](https://spacy.io/)
 
 - [NLTK](https://www.nltk.org/)
+
+- [Tensor Flow](https://www.tensorflow.org/)
+  [Lite](https://www.tensorflow.org/lite)
+  [ModelMaker](https://www.tensorflow.org/lite/guide/model_maker)
+
+- [Compare Tensorflow Deep Learning Model with Classical Machine Learning
+  models — KNN, Naive Bayes, Logistic Regression, SVM — IRIS
+  Classification](https://medium.com/analytics-vidhya/compare-tensorflow-deep-learning-model-with-classical-machine-learning-models-knn-naive-bayes-61b40bb3382)
 
 ## Datasets
 
